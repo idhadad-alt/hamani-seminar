@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מכתב פתיחה | צוות חמני — סמינר בקיסריה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#305260;
+  --teal-dark:#243f4b;
+  --gold:#d0ac34;
+  --card:#ffffff;
+  --ink:#3c4a52;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Heebo',-apple-system,'Segoe UI',Arial,sans-serif;
+  background:var(--teal);
+  color:var(--ink);
+  line-height:1.85;
+  font-size:17px;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+.page{max-width:720px;margin:0 auto;padding:28px 16px 60px;}
+.logo{
+  text-align:center;
+  padding:26px 0 20px;
+}
+.logo .word{
+  display:inline-block;
+  color:#fff;
+  font-weight:800;
+  font-size:34px;
+  letter-spacing:1px;
+  position:relative;
+  padding:0 8px;
+}
+.logo .word::after{
+  content:"";
+  display:block;
+  height:8px;
+  margin-top:2px;
+  border:3px solid #fff;
+  border-top:none;
+  border-radius:0 0 60px 60px / 0 0 40px 40px;
+  opacity:.95;
+}
+.titlebar{
+  background:var(--gold);
+  color:var(--teal-dark);
+  text-align:center;
+  border-radius:6px;
+  padding:14px 12px 10px;
+  margin:0 auto 26px;
+}
+.titlebar h1{
+  font-size:23px;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+.titlebar .sub{
+  font-size:15px;
+  font-weight:500;
+  margin-top:2px;
+}
+.card{
+  background:var(--card);
+  border-radius:18px;
+  padding:38px 30px 46px;
+  box-shadow:0 10px 34px rgba(0,0,0,.22);
+}
+.card + .card{margin-top:26px;}
+p{margin:0 0 1.1em;}
+p:last-child{margin-bottom:0;}
+.lead-greet{font-weight:700;color:var(--teal-dark);font-size:18px;}
+.welcome{
+  font-weight:800;
+  color:var(--teal-dark);
+  font-size:19px;
+  margin:1.3em 0 .9em;
+}
+h2{
+  color:var(--teal-dark);
+  font-size:21px;
+  font-weight:800;
+  margin:0 0 .8em;
+  padding-bottom:10px;
+  position:relative;
+}
+h2::after{
+  content:"";
+  position:absolute;
+  bottom:0;right:0;
+  width:52px;height:4px;
+  background:var(--gold);
+  border-radius:2px;
+}
+.rules{list-style:none;margin:0 0 1.1em;}
+.rules li{
+  position:relative;
+  padding-right:26px;
+  margin-bottom:.55em;
+}
+.rules li::before{
+  content:"◆";
+  position:absolute;
+  right:0;top:0;
+  color:var(--gold);
+  font-size:14px;
+  line-height:2.1;
+}
+.rules li b{color:var(--teal-dark);font-weight:700;}
+a{color:var(--teal);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;}
+a:hover{color:var(--teal-dark);}
+.parking-tools{
+  margin-top:14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:flex-start;
+}
+.parking-shot{
+  display:block;
+  border:2px solid var(--gold);
+  border-radius:12px;
+  overflow:hidden;
+  max-width:230px;
+  cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.15);
+  transition:transform .15s ease;
+}
+.parking-shot:hover{transform:scale(1.02);}
+.parking-shot img{display:block;width:100%;height:auto;}
+.parking-shot .cap{
+  display:block;
+  background:var(--gold);
+  color:var(--teal-dark);
+  font-size:13.5px;
+  font-weight:700;
+  text-align:center;
+  padding:6px 8px;
+}
+.closing{margin-top:1.4em;}
+.signature{font-weight:800;color:var(--teal-dark);font-size:18px;margin-top:.4em;}
+.footer{
+  text-align:center;
+  padding:26px 0 6px;
+}
+.footer a{
+  color:var(--gold);
+  font-weight:600;
+  font-size:15px;
+  text-decoration:none;
+  letter-spacing:.5px;
+}
+/* full-screen image viewer */
+.viewer{
+  position:fixed;inset:0;
+  background:rgba(20,32,38,.97);
+  display:none;
+  align-items:center;justify-content:center;
+  z-index:100;
+  flex-direction:column;
+}
+.viewer.open{display:flex;}
+.viewer img{
+  max-width:96vw;max-height:88vh;
+  border-radius:10px;
+  box-shadow:0 8px 40px rgba(0,0,0,.5);
+}
+.viewer .close{
+  position:absolute;top:18px;left:18px;
+  background:var(--gold);color:var(--teal-dark);
+  border:none;border-radius:50%;
+  width:44px;height:44px;font-size:20px;font-weight:800;
+  cursor:pointer;
+}
+@media (max-width:560px){
+  body{font-size:16.5px;}
+  .card{padding:30px 20px 38px;}
+  .titlebar h1{font-size:20px;}
+  h2{font-size:19px;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="logo"><span class="word">כפר־מעבר</span></div>
+
+  <div class="titlebar">
+    <h1>מכתב פתיחה | צוות חמני</h1>
+    <div class="sub">סמינר בקיסריה · 29-31 באוקטובר 2026</div>
+  </div>
+
+  <div class="card">
+    <p class="lead-greet">צוות חמני היקר,</p>
+    <p>חלפו כחודשיים מאז שהתחלנו את הקשר: שיחה עם עדי מהעמותה, פגישה עם קבוצת המובילים, הזום המשותף של כולנו, השאלונים והשיחות האישיות. דרך כל אלה הכרנו אתכם, את סיפור הצוות, את מה שמעסיק אתכם ואת הבקשות שלכם - להתקרב, להיזכר ולהתחדש בקשר.</p>
+    <p>מתוך מה ששמענו, קראנו והבנו כבקשות העומק שלכם, בנינו מהלך שמותאם לכם. אנחנו מתרגשים לצעוד אתכם את הימים הקרובים בסופ״ש בקיסריה.</p>
+    <p class="welcome">אז ברוכים הבאים לכפר מעבר.</p>
+    <p>אחרי השנים האחרונות כולנו זקוקים לרגע של נשימה. חלקכם עדיין במילואים וחלקכם כבר לא, חלקכם הייתם בלחימה לאחרונה וחלקכם לא - והשנים האלה נגעו בכל אחד מכם ובקשרים ביניכם, כחברים וכצוות. המרחב הזה נועד עבור כולכם: מקום שבו אפשר להאט, להוריד מהדריכות, לפגוש את מה שכל אחד סוחב איתו, ופשוט להיות ביחד - בדרכים מוכרות וגם בחדשות.</p>
+    <p>במהלך שלושת הימים נאסוף את החלקים השונים שמרכיבים את הצוות, נעשה מקום לדברים שפחות מדוברים ביום־יום, ונאפשר התחדשות, חיבור ועיצוב של העתיד המשותף.</p>
+    <p>המכתב הזה מרכז את כל מה שכדאי לדעת לפני שמגיעים. קחו לעצמכם כמה דקות שקטות וקראו בעיון.</p>
+    <p>הסמינר יתקיים בקיסריה, <b>במרחב מיוחד ומוקפד</b> שנתרם לכם על ידי משפחת רפפורט. המקום פרטי ושקט, מנותק מהרעש היומיומי, ומאפשר לנו לעבוד לעומק.</p>
+  </div>
+
+  <div class="card">
+    <h2>על התהליך: תנועת הסמינר</h2>
+    <p>המהלך בנוי משלושה ימים, ולמעשה משלושה חלקים.</p>
+    <p><b>ביום הראשון</b> ניצור תשתית של ביטחון, שייכות ושקט, ונכיר כמה שפות שיאפשרו לגלות תנועות חדשות - בין כל אחד מכם לעצמו ולגופו, וביניכם, חברי הצוות.</p>
+    <p><b>ביום השני</b> נעמיק: נרכך במידה את שכבת ההרגלים ואת המושגים השחוקים על עצמנו ואחד על השני, ונאמן את עצמנו להיכנס לעולמו של האחר ולהקשיב. נעשה זאת בעיקר דרך גישה סיפורית, שנותנת מקום נפרד ומובחן לסיפור האישי של כל אחד מכם. נעבוד בכמה פעימות: בכל פעימה כמה מכם יחלקו סיפור, אירוע או נקודת מבט, ויחד נחבר מחדש את התמונה המשותפת שבין כל הסיפורים.</p>
+    <p>בין פעימות הסיפורים נשלב פעילויות גוף מונחות - נשימה, חשיפה לקור וקצב - שיפתחו מפגש מסוג אחר עם הגוף ואחד עם השני.</p>
+    <p><b>ביום שבת בבוקר</b> נשלים את מעגל הסיפורים. את המשך היום נקדיש לעיבוד ולהטמעה של מה שלמדנו, ולחזרה הביתה עם כלים מעשיים ושפה משותפת. לקראת הסיום נפנה מבט קדימה - אל העתיד ואל שאלת הזהות האישית והצוותית.</p>
+    <p>כדי לעשות מקום נעים לאחים הדתיים, מצד ההנחיה הסמינר כולו יהיה שומר שבת.</p>
+  </div>
+
+  <div class="card">
+    <h2>המיכל הקבוצתי והגבולות שמחזיקים אותו</h2>
+    <p>כדי שנוכל לצלול לעומק בביטחון, אנחנו מסכימים מראש על כמה כללים פשוטים:</p>
+    <ul class="rules">
+      <li><b>אחריות משותפת:</b> כולם מגיעים יחד ועוזבים יחד.</li>
+      <li><b>סודיות:</b> כל מה שנאמר בתוך הקבוצה נשאר בקבוצה.</li>
+      <li><b>מרחב שקט:</b> המפגשים הקבוצתיים הם ללא טלפונים סלולריים.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>גוף, נפש וקולינריה</h2>
+    <ul class="rules">
+      <li><b>תמיכה במגע:</b> תומר, מטפל מגע מנוסה, ילווה אותנו לאורך כל הימים ויציע טיפולי גוף לשחרור, ריפוי והפגת מתחים.</li>
+      <li><b>הזנה:</b> ארוחות טריות, מוקפדות ומזינות, שיוכנו עבורנו לאורך הסמינר על ידי שף הכפר עופר.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>פרטי הסמינר</h2>
+    <ul class="rules">
+      <li><b>תאריכים:</b> 29-31/10/2026.</li>
+      <li><b>הגעה והתארגנות 29/10:</b> בין 09:15 ל־10:00 (תחילת הפעילות ב־10:00 בדיוק).</li>
+      <li><b>סיום 31/10:</b> ב־17:30, ואז הבדלה, חיבוקים והביתה.</li>
+      <li>נא לקחת בחשבון עומסי תנועה ופקקים כדי להגיע בזמן.</li>
+      <li><b>חנייה:</b> נא לחנות בחנייה מסודרת במרחק כשתי דקות הליכה מהבית. <a href="https://maps.app.goo.gl/MkiYnkRSyNSJsuHH6" target="_blank" rel="noopener">קישור לניווט לחנייה</a>.
+        <span class="parking-tools">
+          <a class="parking-shot" id="parkingShot" href="parking.jpg" aria-label="פתיחת צילום מסך של מיקום החנייה">
+            <img src="parking.jpg" alt="צילום מסך: מיקום החנייה בקיסריה">
+            <span class="cap">צילום מסך של החנייה — לחצו להגדלה</span>
+          </a>
+          <a href="https://waze.com/ul?ll=32.510462,34.9031474&amp;navigate=yes" target="_blank" rel="noopener">קישור לוויז לווילה (התמר 5)</a>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>מפגש אינטגרציה</h2>
+    <p>ניפגש שוב כדי לחבר את מה שנפתח בסמינר אל המעבר הביתה.</p>
+    <p><b>יום חמישי, 19/11/2026, בשעות 19:00-22:00</b> באיזור השרון. מיקום מדויק יימסר בהמשך. שריינו כבר עכשיו ביומן.</p>
+  </div>
+
+  <div class="card">
+    <h2>הכנות וציוד נדרש</h2>
+    <ul class="rules">
+      <li>בואו בלב פתוח ובסקרנות.</li>
+      <li><b>לשימוש אישי:</b> כלי רחצה, בגד ים לחשיפה לקור ולאינטגרציה במים, בגדים נוחים ואזרחיים, נעליים נוחות, שתי מגבות וכלי כתיבה. למוזיקאים ביניכם, גם כלי נגינה לשעות שלפני השבת.</li>
+    </ul>
+    <p class="closing">מקווים לזמן נעים, רך ומזין ביחד - זמן שמחבר אותנו פנימה ובינינו.<br>
+    אנחנו מחכים לכם, מעריכים את האמון ומתרגשים לקראת המסע המשותף.</p>
+    <p>שלכם,</p>
+    <p class="signature">צוות כפר מעבר - אלעד, זאק, אורי, תומר, דני, עופר ודור</p>
+  </div>
+
+  <div class="footer"><a href="https://kfarm.co.il" target="_blank" rel="noopener">kfarm.co.il</a></div>
+
+</div>
+
+<div class="viewer" id="viewer" role="dialog" aria-label="צילום מסך של מיקום החנייה">
+  <button class="close" id="viewerClose" aria-label="סגירה">✕</button>
+  <img src="parking.jpg" alt="צילום מסך: מיקום החנייה בקיסריה">
+</div>
+
+<script>
+(function(){
+  var shot=document.getElementById('parkingShot');
+  var viewer=document.getElementById('viewer');
+  var closeBtn=document.getElementById('viewerClose');
+  function openViewer(e){
+    e.preventDefault();
+    history.pushState({viewer:true},'');
+    viewer.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeViewer(){
+    viewer.classList.remove('open');
+    document.body.style.overflow='';
+  }
+  shot.addEventListener('click',openViewer);
+  closeBtn.addEventListener('click',function(){ history.back(); });
+  viewer.addEventListener('click',function(e){ if(e.target===viewer){ history.back(); } });
+  window.addEventListener('popstate',function(){ closeViewer(); });
+})();
+</script>
+</body>
+</html>
